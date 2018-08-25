@@ -13,8 +13,8 @@ public class Kanji {
     public static final String createTableSQL = "CREATE TABLE KANJIS (" +
             "ID INTEGER PRIMARY KEY, " +
             "READ TEXT, " +
-            "WRITTEN TEXT," +
-            "SET INTEGER)";
+            "WRITTEN TEXT, " +
+            "KANJI_SET INTEGER)";
 
     private long id;
     public long getId() { return id; }
@@ -48,7 +48,7 @@ public class Kanji {
         }
         values.put("READ", this.getRead());
         values.put("WRITTEN", this.getWritten());
-        values.put("SET", this.getSet());
+        values.put("KANJI_SET", this.getSet());
 
         long id = db.replace("KANJIS", null, values);
         this.setId(id);
@@ -64,7 +64,7 @@ public class Kanji {
         long id = cursor.getLong(cursor.getColumnIndex("ID"));
         String read = cursor.getString(cursor.getColumnIndex("READ"));
         String written = cursor.getString(cursor.getColumnIndex("WRITTEN"));
-        int set = cursor.getInt(cursor.getColumnIndex("SET"));
+        int set = cursor.getInt(cursor.getColumnIndex("KANJI_SET"));
         return new Kanji(id, read, written, set);
     }
 
