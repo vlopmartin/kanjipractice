@@ -21,6 +21,7 @@ public class EditPracticeSetActivity extends AppCompatActivity implements KanjiF
         setContentView(R.layout.activity_edit_practice_set);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setFragments();
     }

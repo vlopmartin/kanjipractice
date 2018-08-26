@@ -9,4 +9,6 @@
     <string name="edit_practice_set_button">Edit Practice Set</string>
     <string name="button_left"><![CDATA[<]]></string>
     <string name="button_right"><![CDATA[>]]></string>
+    <string name="global_set_label">All Kanji</string>
+    <string name="practice_set_label">Practice Set</string>
 </resources>

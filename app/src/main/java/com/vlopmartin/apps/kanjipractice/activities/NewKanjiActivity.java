@@ -23,6 +23,7 @@ public class NewKanjiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_kanji);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         kanjiReadView = findViewById(R.id.kanjiRead);
         kanjiWrittenView = findViewById(R.id.kanjiWritten);
