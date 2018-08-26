@@ -27,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void onStartPractice(View v) {
+        Intent intent = new Intent(this, PracticeActivity.class);
+        this.startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

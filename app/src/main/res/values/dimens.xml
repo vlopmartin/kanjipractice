@@ -5,4 +5,5 @@
     <dimen name="button_width">48dp</dimen>
     <dimen name="delete_button_size">24dp</dimen>
     <dimen name="add_button_margin">8dp</dimen>
+    <dimen name="practice_frame_margin">64dp</dimen>
 </resources>

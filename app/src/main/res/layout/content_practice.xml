@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.PracticeActivity"
+    tools:showIn="@layout/activity_practice">
+
+    <FrameLayout
+        android:id="@+id/practiceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/practice_frame_margin"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/kanjiRead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onToggleKanji"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/kanjiWritten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/completedView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/practice_frame_margin"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/practice_complete" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onReturn"
+                android:text="@string/return_button" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/previousButton"
+        android:layout_width="@dimen/practice_frame_margin"
+        android:layout_height="0dp"
+        android:background="?android:selectableItemBackground"
+        android:onClick="onPrevious"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chevron_left_selector" />
+
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="@dimen/practice_frame_margin"
+        android:layout_height="0dp"
+        android:background="?android:selectableItemBackground"
+        android:onClick="onNext"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/chevron_right_selector" />
+
+</android.support.constraint.ConstraintLayout>

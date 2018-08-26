@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_new_kanji">New Kanji</string>
     <string name="title_activity_edit_practice_set">Edit Practice Set</string>
+    <string name="title_activity_practice">Practice</string>
     <string name="kanji_read_hint">Pronounciation</string>
     <string name="kanji_written_hint">Written form</string>
     <string name="save_button">Save</string>
@@ -11,4 +12,7 @@
     <string name="button_right"><![CDATA[>]]></string>
     <string name="global_set_label">All Kanji</string>
     <string name="practice_set_label">Practice Set</string>
+    <string name="practice_complete">Practice complete!</string>
+    <string name="return_button">Return</string>
+    <string name="start_practice_button">Start Practice</string>
 </resources>
