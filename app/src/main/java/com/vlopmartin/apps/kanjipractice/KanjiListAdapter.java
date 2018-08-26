@@ -1,5 +1,6 @@
 package com.vlopmartin.apps.kanjipractice;
 
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,16 @@ import java.util.List;
  */
 public class KanjiListAdapter extends RecyclerView.Adapter<KanjiListAdapter.KanjiViewHolder> {
 
-    private final List<Kanji> kanjiList;
+    public final List<Kanji> kanjiList;
     private final OnListFragmentInteractionListener listener;
 
-    public int selectedItem;
+    private Resources resources;
+    private int selectedItem;
 
-    public KanjiListAdapter(List<Kanji> items, OnListFragmentInteractionListener listener) {
+    public KanjiListAdapter(List<Kanji> items, OnListFragmentInteractionListener listener, Resources resources) {
         kanjiList = items;
         this.listener = listener;
+        this.resources = resources;
     }
 
     @Override
@@ -35,7 +38,7 @@ public class KanjiListAdapter extends RecyclerView.Adapter<KanjiListAdapter.Kanj
     }
 
     @Override
-    public void onBindViewHolder(final KanjiViewHolder holder, int position) {
+    public void onBindViewHolder(final KanjiViewHolder holder, final int position) {
         holder.item = kanjiList.get(position);
         holder.idView.setText(String.valueOf(kanjiList.get(position).getId()));
         holder.contentView.setText(kanjiList.get(position).getWritten());
@@ -70,9 +73,21 @@ public class KanjiListAdapter extends RecyclerView.Adapter<KanjiListAdapter.Kanj
             contentView = (TextView) view.findViewById(R.id.content);
         }
 
+        public void onClick(View view) {
+            System.out.println("Clicked");
+        }
+
         @Override
         public String toString() {
             return super.toString() + " '" + contentView.getText() + "'";
         }
     }
+
+    public int getSelectedItem() { return selectedItem; }
+
+    public void setSelectedItem(int selectedItem) {
+        this.selectedItem = selectedItem;
+    }
+
+
 }

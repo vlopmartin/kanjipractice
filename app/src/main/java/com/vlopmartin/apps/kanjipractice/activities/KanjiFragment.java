@@ -25,6 +25,7 @@ public class KanjiFragment extends Fragment {
     private static final String ARG_KANJI_SET = "kanji-set";
     private int kanjiSet = 0;
     private OnListFragmentInteractionListener listener;
+    private KanjiListAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -33,7 +34,6 @@ public class KanjiFragment extends Fragment {
     public KanjiFragment() {
     }
 
-    @SuppressWarnings("unused")
     public static KanjiFragment newInstance(int kanjiSet) {
         KanjiFragment fragment = new KanjiFragment();
         Bundle args = new Bundle();
@@ -61,7 +61,8 @@ public class KanjiFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new KanjiListAdapter(Kanji.getSet(this.getContext(), 0), listener));
+            adapter = new KanjiListAdapter(Kanji.getSet(this.getContext(), getArguments().getInt(ARG_KANJI_SET)), listener, getResources());
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -96,5 +97,17 @@ public class KanjiFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Kanji kanjiItem);
+    }
+
+    public void addItem(Kanji item) {
+        int index = adapter.kanjiList.size();
+        adapter.kanjiList.add(index, item);
+        adapter.notifyItemInserted(index);
+    }
+
+    public void removeItem(Kanji item) {
+        int index = adapter.kanjiList.indexOf(item);
+        adapter.kanjiList.remove(index);
+        adapter.notifyItemRemoved(index);
     }
 }

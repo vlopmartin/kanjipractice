@@ -49,18 +49,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/leftButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_chevron_left_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/rightButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_chevron_right_black_24dp" />
-
-        <ImageButton
             android:id="@+id/addButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

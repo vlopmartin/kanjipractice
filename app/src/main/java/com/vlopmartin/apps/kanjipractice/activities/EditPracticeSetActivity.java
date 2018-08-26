@@ -12,8 +12,8 @@ import com.vlopmartin.apps.kanjipractice.R;
 
 public class EditPracticeSetActivity extends AppCompatActivity implements KanjiFragment.OnListFragmentInteractionListener {
 
-    private Fragment globalSetFragment;
-    private Fragment practiceSetFragment;
+    private KanjiFragment globalSetFragment;
+    private KanjiFragment practiceSetFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class EditPracticeSetActivity extends AppCompatActivity implements KanjiF
         if (globalSetFragment != null) transaction.remove(globalSetFragment);
         if (practiceSetFragment != null) transaction.remove(practiceSetFragment);
         globalSetFragment = KanjiFragment.newInstance(0);
-        practiceSetFragment = KanjiFragment.newInstance(0);
+        practiceSetFragment = KanjiFragment.newInstance(1);
         transaction.add(R.id.globalSetFrame, globalSetFragment);
         transaction.add(R.id.practiceSetFrame, practiceSetFragment);
         transaction.commit();
@@ -43,7 +43,17 @@ public class EditPracticeSetActivity extends AppCompatActivity implements KanjiF
 
     @Override
     public void onListFragmentInteraction(Kanji kanjiItem) {
-
+        int kanjiSet = kanjiItem.getSet();
+        if (kanjiSet == 0) {
+            globalSetFragment.removeItem(kanjiItem);
+            practiceSetFragment.addItem(kanjiItem);
+            kanjiItem.setSet(1);
+        } else if (kanjiSet == 1) {
+            practiceSetFragment.removeItem(kanjiItem);
+            globalSetFragment.addItem(kanjiItem);
+            kanjiItem.setSet(0);
+        }
+        kanjiItem.save(this.getApplicationContext());
     }
 
     public void onAddKanji(View v) {
