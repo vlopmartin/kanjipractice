@@ -34,26 +34,33 @@ public class EditPracticeSetActivity extends AppCompatActivity implements KanjiF
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (globalSetFragment != null) transaction.remove(globalSetFragment);
         if (practiceSetFragment != null) transaction.remove(practiceSetFragment);
-        globalSetFragment = KanjiFragment.newInstance(0);
-        practiceSetFragment = KanjiFragment.newInstance(1);
+        globalSetFragment = KanjiFragment.newInstance(Kanji.GLOBAL_SET);
+        practiceSetFragment = KanjiFragment.newInstance(Kanji.PRACTICE_SET);
         transaction.add(R.id.globalSetFrame, globalSetFragment);
         transaction.add(R.id.practiceSetFrame, practiceSetFragment);
         transaction.commit();
     }
 
     @Override
-    public void onListFragmentInteraction(Kanji kanjiItem) {
+    public void onListFragmentInteraction(Kanji kanjiItem, int action) {
         int kanjiSet = kanjiItem.getSet();
-        if (kanjiSet == 0) {
-            globalSetFragment.removeItem(kanjiItem);
-            practiceSetFragment.addItem(kanjiItem);
-            kanjiItem.setSet(1);
-        } else if (kanjiSet == 1) {
-            practiceSetFragment.removeItem(kanjiItem);
-            globalSetFragment.addItem(kanjiItem);
-            kanjiItem.setSet(0);
+        if (action == KanjiFragment.ACTION_SELECT) {
+            if (kanjiSet == Kanji.GLOBAL_SET) {
+                globalSetFragment.removeItem(kanjiItem);
+                practiceSetFragment.addItem(kanjiItem);
+                kanjiItem.setSet(Kanji.PRACTICE_SET);
+            } else if (kanjiSet == Kanji.PRACTICE_SET) {
+                practiceSetFragment.removeItem(kanjiItem);
+                globalSetFragment.addItem(kanjiItem);
+                kanjiItem.setSet(Kanji.GLOBAL_SET);
+            }
+            kanjiItem.save(this.getApplicationContext());
         }
-        kanjiItem.save(this.getApplicationContext());
+        else if (action == KanjiFragment.ACTION_DELETE) {
+            if (kanjiSet == Kanji.GLOBAL_SET) globalSetFragment.removeItem(kanjiItem);
+            else if (kanjiSet == Kanji.PRACTICE_SET) practiceSetFragment.removeItem(kanjiItem);
+            kanjiItem.delete(this.getApplicationContext());
+        }
     }
 
     public void onAddKanji(View v) {

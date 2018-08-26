@@ -22,6 +22,9 @@ import com.vlopmartin.apps.kanjipractice.R;
  */
 public class KanjiFragment extends Fragment {
 
+    public static final int ACTION_SELECT = 0;
+    public static final int ACTION_DELETE = 1;
+
     private static final String ARG_KANJI_SET = "kanji-set";
     private int kanjiSet = 0;
     private OnListFragmentInteractionListener listener;
@@ -61,7 +64,7 @@ public class KanjiFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            adapter = new KanjiListAdapter(Kanji.getSet(this.getContext(), getArguments().getInt(ARG_KANJI_SET)), listener, getResources());
+            adapter = new KanjiListAdapter(Kanji.getSet(this.getContext(), getArguments().getInt(ARG_KANJI_SET)), listener);
             recyclerView.setAdapter(adapter);
         }
         return view;
@@ -96,7 +99,7 @@ public class KanjiFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Kanji kanjiItem);
+        void onListFragmentInteraction(Kanji kanjiItem, int action);
     }
 
     public void addItem(Kanji item) {

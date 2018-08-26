@@ -10,6 +10,9 @@ import java.util.List;
 
 public class Kanji {
 
+    public static final int GLOBAL_SET = 0;
+    public static final int PRACTICE_SET = 1;
+
     public static final String createTableSQL = "CREATE TABLE KANJIS (" +
             "ID INTEGER PRIMARY KEY, " +
             "READ TEXT, " +
