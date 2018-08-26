@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onEditPracticeSet(View v) {
-        Intent intent = new Intent(this, NewKanjiActivity.class);
+        Intent intent = new Intent(this, EditPracticeSetActivity.class);
         this.startActivity(intent);
     }
 

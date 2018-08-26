@@ -6,4 +6,6 @@
     <string name="kanji_written_hint">Written form</string>
     <string name="save_button">Save</string>
     <string name="edit_practice_set_button">Edit Practice Set</string>
+    <string name="button_left"><![CDATA[<]]></string>
+    <string name="button_right"><![CDATA[>]]></string>
 </resources>

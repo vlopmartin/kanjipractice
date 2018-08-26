@@ -88,7 +88,7 @@ public class Kanji {
         List<Kanji> ret = new ArrayList<Kanji>();
 
         SQLiteDatabase db = new DBHelper(ctx).getReadableDatabase();
-        Cursor cursor = db.query("KANJIS", null, "set = ?", new String[] {String.valueOf(set)}, null, null, null);
+        Cursor cursor = db.query("KANJIS", null, "KANJI_SET = ?", new String[] {String.valueOf(set)}, null, null, null);
 
         while (cursor.moveToNext()) {
             ret.add(readCursor(cursor));
