@@ -22,7 +22,7 @@
         android:layout_marginBottom="@dimen/frame_margin"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="@dimen/frame_margin"
-        android:layout_marginRight="@dimen/frame_margin"
+        android:layout_marginRight="@dimen/button_width"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/frame_margin"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,7 @@
 
     <LinearLayout
         android:id="@+id/buttons"
-        android:layout_width="31dp"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="4dp"
@@ -48,17 +48,25 @@
         app:layout_constraintStart_toEndOf="@+id/globalSetFrame"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/button3"
+        <ImageButton
+            android:id="@+id/leftButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_left" />
+            android:src="@drawable/ic_chevron_left_black_24dp" />
 
-        <Button
-            android:id="@+id/button4"
+        <ImageButton
+            android:id="@+id/rightButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_right" />
+            android:src="@drawable/ic_chevron_right_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onAddKanji"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
     </LinearLayout>
 
     <FrameLayout
@@ -67,7 +75,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/frame_margin"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="@dimen/frame_margin"
+        android:layout_marginLeft="@dimen/button_width"
         android:layout_marginRight="@dimen/frame_margin"
         android:layout_marginStart="8dp"
         android:layout_marginTop="@dimen/frame_margin"
