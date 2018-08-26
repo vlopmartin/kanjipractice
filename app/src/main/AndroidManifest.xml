@@ -19,11 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.EditPracticeSetActivity" />
+        <activity android:name=".activities.EditPracticeSetActivity"
+            android:label="@string/title_activity_edit_practice_set"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activities.NewKanjiActivity"
             android:label="@string/title_activity_new_kanji"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
