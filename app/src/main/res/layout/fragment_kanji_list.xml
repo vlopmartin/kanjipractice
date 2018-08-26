@@ -10,4 +10,6 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".activities.KanjiFragment"
-    tools:listitem="@layout/fragment_kanji" />
+    tools:listitem="@layout/fragment_kanji" >
+
+</android.support.v7.widget.RecyclerView>
