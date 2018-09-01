@@ -15,4 +15,5 @@
     <string name="practice_complete">Practice complete!</string>
     <string name="return_button">Return</string>
     <string name="start_practice_button">Start Practice</string>
+    <string name="save_to_practice_set_button">Save to Practice Set</string>
 </resources>

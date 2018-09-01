@@ -1,14 +1,13 @@
 package com.vlopmartin.apps.kanjipractice;
 
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.vlopmartin.apps.kanjipractice.activities.KanjiFragment;
-import com.vlopmartin.apps.kanjipractice.activities.KanjiFragment.OnListFragmentInteractionListener;
+import com.vlopmartin.apps.kanjipractice.fragments.KanjiFragment;
+import com.vlopmartin.apps.kanjipractice.fragments.KanjiFragment.OnListFragmentInteractionListener;
 import com.vlopmartin.apps.kanjipractice.activities.dummy.DummyContent.DummyItem;
 
 import java.util.List;

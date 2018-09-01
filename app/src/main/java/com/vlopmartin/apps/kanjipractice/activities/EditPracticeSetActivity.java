@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.vlopmartin.apps.kanjipractice.Kanji;
 import com.vlopmartin.apps.kanjipractice.R;
+import com.vlopmartin.apps.kanjipractice.fragments.KanjiFragment;
 
 public class EditPracticeSetActivity extends AppCompatActivity implements KanjiFragment.OnListFragmentInteractionListener {
 

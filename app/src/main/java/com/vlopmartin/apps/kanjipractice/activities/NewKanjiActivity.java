@@ -32,7 +32,16 @@ public class NewKanjiActivity extends AppCompatActivity {
     public void onSave(View v) {
         String kanjiRead = kanjiReadView.getText().toString();
         String kanjiWritten = kanjiWrittenView.getText().toString();
-        Kanji kanji = new Kanji(0, kanjiRead, kanjiWritten, 0);
+        Kanji kanji = new Kanji(0, kanjiRead, kanjiWritten, Kanji.GLOBAL_SET);
+        kanji.save(this.getApplicationContext());
+        this.setResult(RESULT_OK);
+        this.finish();
+    }
+
+    public void onSaveToPracticeSet(View v) {
+        String kanjiRead = kanjiReadView.getText().toString();
+        String kanjiWritten = kanjiWrittenView.getText().toString();
+        Kanji kanji = new Kanji(0, kanjiRead, kanjiWritten, Kanji.PRACTICE_SET);
         kanji.save(this.getApplicationContext());
         this.setResult(RESULT_OK);
         this.finish();
