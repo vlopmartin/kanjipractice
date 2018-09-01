@@ -18,13 +18,13 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/practice_frame_margin"
             android:gravity="center_vertical|center_horizontal"
+            android:onClick="onToggleKanji"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/kanjiRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onToggleKanji"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <Space
