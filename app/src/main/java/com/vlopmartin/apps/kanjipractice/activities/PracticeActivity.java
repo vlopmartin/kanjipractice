@@ -103,15 +103,17 @@ public class PracticeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == android.R.id.home) {
-            if (webView.getVisibility() == View.VISIBLE) {
-                webView.setVisibility(View.GONE);
-                return true;
-            } else {
-                return super.onOptionsItemSelected(item);
-            }
+            onBackPressed();
         }
         return true;
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if (webView.getVisibility() == View.VISIBLE) {
+            webView.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
