@@ -58,7 +58,11 @@ public class EditPracticeSetActivity extends AppCompatActivity implements KanjiF
                 globalSetFragment.addItem(kanjiItem);
                 kanjiItem.setSet(Kanji.GLOBAL_SET);
             }
-            kanjiItem.save(this.getApplicationContext());
+            try {
+                kanjiItem.save(this.getApplicationContext());
+            } catch (Kanji.DuplicateKanjiException e) {
+                // Do nothing, this should not happen!
+            }
         }
         else if (action == KanjiFragment.ACTION_DELETE) {
             if (kanjiSet == Kanji.GLOBAL_SET) globalSetFragment.removeItem(kanjiItem);

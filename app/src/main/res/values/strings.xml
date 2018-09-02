@@ -16,4 +16,5 @@
     <string name="return_button">Return</string>
     <string name="start_practice_button">Start Practice</string>
     <string name="save_to_practice_set_button">Save to Practice Set</string>
+    <string name="duplicate_kanji_message">That kanji already exists!</string>
 </resources>

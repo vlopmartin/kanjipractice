@@ -34,7 +34,8 @@
             android:name=".activities.NewKanjiActivity"
             android:label="@string/title_activity_new_kanji"
             android:parentActivityName=".activities.EditPracticeSetActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vlopmartin.apps.kanjipractice.activities.EditPracticeSetActivity" />

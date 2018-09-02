@@ -42,8 +42,17 @@ public class Kanji {
         this.setSet(set);
     }
 
-    public void save(Context ctx) {
+    public void save(Context ctx) throws DuplicateKanjiException {
         SQLiteDatabase db = new DBHelper(ctx).getWritableDatabase();
+
+        Cursor cursor = db.query("KANJIS", null, "WRITTEN = ?", new String[] {this.written}, null, null, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToNext();
+            Kanji other = readCursor(cursor);
+            if (other.getId() != this.getId()) {
+                throw new DuplicateKanjiException();
+            }
+        }
 
         ContentValues values = new ContentValues();
         if (this.id != 0) {
@@ -100,4 +109,6 @@ public class Kanji {
         cursor.close();
         return ret;
     }
+
+    public class DuplicateKanjiException extends Exception { }
 }

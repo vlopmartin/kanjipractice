@@ -1,8 +1,6 @@
 package com.vlopmartin.apps.kanjipractice.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,21 +28,24 @@ public class NewKanjiActivity extends AppCompatActivity {
     }
 
     public void onSave(View v) {
-        String kanjiRead = kanjiReadView.getText().toString();
-        String kanjiWritten = kanjiWrittenView.getText().toString();
-        Kanji kanji = new Kanji(0, kanjiRead, kanjiWritten, Kanji.GLOBAL_SET);
-        kanji.save(this.getApplicationContext());
-        this.setResult(RESULT_OK);
-        this.finish();
+        saveAndExit(v, Kanji.GLOBAL_SET);
     }
 
     public void onSaveToPracticeSet(View v) {
+        saveAndExit(v, Kanji.PRACTICE_SET);
+    }
+
+    private void saveAndExit(View v, int set) {
         String kanjiRead = kanjiReadView.getText().toString();
         String kanjiWritten = kanjiWrittenView.getText().toString();
-        Kanji kanji = new Kanji(0, kanjiRead, kanjiWritten, Kanji.PRACTICE_SET);
-        kanji.save(this.getApplicationContext());
-        this.setResult(RESULT_OK);
-        this.finish();
+        Kanji kanji = new Kanji(0, kanjiRead, kanjiWritten, set);
+        try {
+            kanji.save(this.getApplicationContext());
+            this.setResult(RESULT_OK);
+            this.finish();
+        } catch (Kanji.DuplicateKanjiException e) {
+            Snackbar.make(v, R.string.duplicate_kanji_message, Snackbar.LENGTH_LONG).show();
+        }
     }
 
 }
