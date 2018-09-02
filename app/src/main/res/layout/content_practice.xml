@@ -18,13 +18,13 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/practice_frame_margin"
             android:gravity="center_vertical|center_horizontal"
-            android:onClick="onToggleKanji"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/kanjiRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onToggleKanji"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <Space
@@ -35,6 +35,7 @@
                 android:id="@+id/kanjiWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onShowWebView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
         </LinearLayout>
 
@@ -96,5 +97,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/chevron_right_selector" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </android.support.constraint.ConstraintLayout>

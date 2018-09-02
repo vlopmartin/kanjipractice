@@ -3,7 +3,10 @@ package com.vlopmartin.apps.kanjipractice.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -21,6 +24,7 @@ public class PracticeActivity extends AppCompatActivity {
     protected View completedView;
     protected ImageButton previousButton;
     protected ImageButton nextButton;
+    protected WebView webView;
 
     protected List<Kanji> practiceList;
     protected int currentIndex;
@@ -39,6 +43,9 @@ public class PracticeActivity extends AppCompatActivity {
         completedView = findViewById(R.id.completedView);
         previousButton = findViewById(R.id.previousButton);
         nextButton = findViewById(R.id.nextButton);
+        webView = findViewById(R.id.webView);
+
+        webView.getSettings().setJavaScriptEnabled(true);
 
         practiceList = Kanji.getSet(this.getApplicationContext(), Kanji.PRACTICE_SET);
         Collections.shuffle(practiceList);
@@ -65,6 +72,13 @@ public class PracticeActivity extends AppCompatActivity {
         else kanjiWrittenView.setVisibility(View.INVISIBLE);
     }
 
+    public void onShowWebView(View v) {
+        String written = kanjiWrittenView.getText().toString();
+        String[] jishoUrl = {"https://jisho.org/search/", "%23kanji"};
+        webView.setVisibility(View.VISIBLE);
+        webView.loadUrl(jishoUrl[0] + written + jishoUrl[1]);
+    }
+
     public void moveSteps(int n) {
         currentIndex += n;
         if (currentIndex == 0) previousButton.setEnabled(false);
@@ -84,5 +98,20 @@ public class PracticeActivity extends AppCompatActivity {
             kanjiWrittenView.setVisibility(View.INVISIBLE);
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            if (webView.getVisibility() == View.VISIBLE) {
+                webView.setVisibility(View.GONE);
+                return true;
+            } else {
+                return super.onOptionsItemSelected(item);
+            }
+        }
+        return true;
+    }
+
 
 }
